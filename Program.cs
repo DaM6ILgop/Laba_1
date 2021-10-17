@@ -1,0 +1,87 @@
+﻿using System;
+using System.Collections;
+
+namespace Table
+{
+    public class OOP
+    {
+
+        public struct Item
+        {
+            public String NameFilm;
+            public String Director;
+            public int YearOfRelease;
+            public String FilmType;
+
+            public Item(string NameFilm, String Director, int YearOfRelease, string FilmType)
+            {
+                this.NameFilm = NameFilm;
+                this.Director = Director;
+                this.YearOfRelease = YearOfRelease;
+                this.FilmType = FilmType;
+
+            }
+
+            public void Print()
+            {
+                Console.WriteLine($"|{this.NameFilm,-24}|{this.Director,-12}|{this.YearOfRelease,-20}|{this.FilmType,-15}|");
+
+            }
+        }
+
+        private static void Main()
+        {
+            ArrayList list = new();
+
+
+            bool flag = true;
+            while (flag)
+            {
+                Console.WriteLine("Введите данные:");
+
+                Console.WriteLine("Фильм:");
+                string NameFilm = Console.ReadLine();
+
+                Console.WriteLine("Режиссер");
+                string Director = Console.ReadLine();
+
+                Console.WriteLine("Год выпуска");
+                int YearOfRelease = Int32.Parse(Console.ReadLine());
+
+                Console.WriteLine("Тип");
+                string FilmType = (Console.ReadLine());
+                Item value = new(NameFilm, Director, YearOfRelease, FilmType);
+                list.Add(value);
+                while (true)
+                {
+                    Console.WriteLine("Добавить строку?\nда - продолжить\nнет - вывод таблицы");
+                    string input = Console.ReadLine();
+                    if (input == "да" || input == "нет")
+                    {
+                        if (input == "нет")
+                        {
+                            flag = false;
+                            break;
+                        }
+                        break;
+                    }
+                    else Console.WriteLine("Ошибка ввода. Попробуйте еще раз.");
+                }
+
+            }
+            Console.WriteLine(new String('-', 76));
+            Console.WriteLine($"{"|Кинопродукция",-75}|");
+            Console.WriteLine(new String('-', 76));
+            Console.WriteLine($"{"|Фильм",-25}|{"Режиссер ",-12}|{"Год выпуска ",-20}|{"Тип",-15}|");
+            Console.WriteLine(new String('-', 76));
+            foreach (Item item in list)
+            {
+                item.Print();
+                Console.WriteLine(new String('-', 76));
+            }
+            Console.WriteLine($"{"|Перечисляемый тип: K – комедия, A - Мультфильм, M - Мелодрама",-75}|");
+            Console.WriteLine(new String('-', 76));
+        }
+
+    }
+}
